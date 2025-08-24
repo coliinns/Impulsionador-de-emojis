@@ -7,7 +7,10 @@ if (!process.env.TOKEN) {
     console.error("❌ Nenhum TOKEN encontrado no ambiente!");
     process.exit(1);
 } else {
-    console.log("🔑 TOKEN detectado, tentando logar...");
+console.log("🔑 Tentando logar no Discord...");
+client.login(process.env.TOKEN)
+    .then(() => console.log("✅ Login enviado, aguardando evento ready..."))
+    .catch(err => console.error("❌ Falha ao enviar login:", err));
 }
 
 // --- Config do Client ---
