@@ -11,7 +11,7 @@ const client = new Client({
 });
 
 // IDs dos canais
-const FARMANDO_CHANNEL = "1377721036044505098";
+const FARMANDO_CHANNEL = "1409163683854290954";
 const GARAGENS_CHANNEL = "1377721089257509110";
 
 // Emojis de cada canal
