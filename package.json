@@ -1,0 +1,17 @@
+{
+  "name": "emoji-bot",
+  "version": "1.0.0",
+  "description": "Bot do Discord que reage automaticamente com emojis em imagens nos canais Farmando e Garagens.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18.17 <23"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
