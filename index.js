@@ -26,7 +26,7 @@ const FARMANDO_CHANNEL = "1410146457440227368";
 const GARAGENS_CHANNEL = "1377721089257509110";
 
 // --- Emojis por canal ---
-const FARMANDO_EMOJIS = ["<a:confetiss:1410158284001771530>", "<a:emoji_35:1410158284001771530>", "<a:MoneySoaring:1405178077394505818>", "<a:moneybag:1405178051935076392>", "👏🏻", "🔥", "<a:emoji_39:1410158810856951880>", "🎰"];
+const FARMANDO_EMOJIS = ["<a:confetiss:1410158284001771530>", "<a:trofeuu:1410158502399442984>","<a:emoji_35:1410158284001771530>", "<a:emoji_37:1410158529687322706>","<a:MoneySoaring:1405178077394505818>", "<a:moneybag:1405178051935076392>", "👏🏻", "🔥", "<a:emoji_39:1410158810856951880>", "🎰"];
 const GARAGENS_EMOJIS = ["🚘", "😮", "👏🏻", "🤩", "✨", "🔥", "🚀"];
 
 // --- Checagem do TOKEN e login ---
