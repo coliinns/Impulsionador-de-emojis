@@ -26,7 +26,7 @@ const FARMANDO_CHANNEL = "1410146457440227368";
 const GARAGENS_CHANNEL = "1377721089257509110";
 
 // --- Emojis por canal ---
-const FARMANDO_EMOJIS = ["🎉", "🥇", "💵", "💰", "👏🏻", "🔥", "🚀", "🎰"];
+const FARMANDO_EMOJIS = ["<a:emoji_35:1410158284001771530>", "🥇", "💵", "💰", "👏🏻", "🔥", "🚀", "🎰"];
 const GARAGENS_EMOJIS = ["🚘", "😮", "👏🏻", "🤩", "✨", "🔥", "🚀"];
 
 // --- Checagem do TOKEN e login ---
