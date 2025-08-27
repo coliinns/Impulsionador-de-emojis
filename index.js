@@ -1,3 +1,6 @@
+// ================================
+// Bot Impulsionador de Emojis
+// ================================
 const { Client, GatewayIntentBits, Partials } = require("discord.js");
 const express = require("express");
 require("dotenv").config();
@@ -8,8 +11,14 @@ const client = new Client({
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessageReactions, // necessário pra reagir
     ],
-    partials: [Partials.Channel, Partials.Message, Partials.Reaction],
+    partials: [
+        Partials.Channel,
+        Partials.Message,
+        Partials.Reaction,
+        Partials.User,
+    ],
 });
 
 // --- IDs dos canais ---
@@ -39,30 +48,29 @@ client.once("ready", () => {
 client.on("messageCreate", async (message) => {
     if (message.author?.bot) return;
 
-    const hasAttachmentImage = message.attachments.size > 0 && [...message.attachments.values()].some(att => {
-        const url = att.url?.toLowerCase() || "";
-        return url.endsWith(".png") || url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".gif") || url.endsWith(".webp");
-    });
+    const inFarmando = message.channel.id === FARMANDO_CHANNEL;
+    const inGaragens = message.channel.id === GARAGENS_CHANNEL;
+    if (!inFarmando && !inGaragens) return;
 
-    const hasEmbedImage = message.embeds?.some(e => {
-        try {
-            return Boolean(e?.data?.image || e?.data?.thumbnail);
-        } catch {
-            return false;
-        }
-    });
+    // 1) Imagem por upload/anexo
+    const hasAttachmentImage = message.attachments.size > 0;
 
-    const hasImage = hasAttachmentImage || hasEmbedImage;
-    if (!hasImage) return;
+    // 2) Imagem via embed (preview de link)
+    const hasEmbedImage = message.embeds.some(e => e.image || e.thumbnail);
+
+    // 3) Link direto de imagem no texto
+    const hasDirectLink = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))/i.test(message.content);
+
+    if (!(hasAttachmentImage || hasEmbedImage || hasDirectLink)) return;
 
     try {
-        if (message.channel?.id === FARMANDO_CHANNEL) {
-            for (const emoji of FARMANDO_EMOJIS) await message.react(emoji);
-        } else if (message.channel?.id === GARAGENS_CHANNEL) {
-            for (const emoji of GARAGENS_EMOJIS) await message.react(emoji);
+        const emojis = inFarmando ? FARMANDO_EMOJIS : GARAGENS_EMOJIS;
+        for (const emoji of emojis) {
+            await message.react(emoji);
         }
+        console.log(`✨ Reagi a uma imagem em #${message.channel.name}`);
     } catch (err) {
-        console.error("Erro ao adicionar reações:", err);
+        console.error("❌ Erro ao reagir:", err);
     }
 });
 
