@@ -37,7 +37,7 @@ const FARMANDO_EMOJIS = [
     "<a:emoji_39:1410158810856951880>"
 ];
 
-const GARAGENS_EMOJIS = ["🚘", "<a:emoji_35:1410158284001771530>", "<a:fbWOW:1410193023538823208>", "🤩", "<a:estrela:1410193047551213640>" , "<a:light_yellow_sparkles:1410193076244320306>", "<a:gifstay401:1410179781068329070>", "<a:emoji_39:1410158810856951880>"];
+const GARAGENS_EMOJIS = ["🚘", "<a:emoji_37:1410158529687322706>", "<a:fbWOW:1410193023538823208>", "🤩", "<a:estrela:1410193047551213640>" , "<a:light_yellow_sparkles:1410193076244320306>", "<a:gifstay401:1410179781068329070>", "<a:emoji_39:1410158810856951880>"];
 
 // --- Checagem do TOKEN e login ---
 if (!process.env.TOKEN) {
